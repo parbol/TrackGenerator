@@ -38,7 +38,8 @@ if __name__ == "__main__":
     vertex = Vertex()
 
     phival = []
-
+    x0 = []
+    y0 = []
     for nevent in range(0, nevents):
         genparticles = gen.runEvent()
         recotracks = reco.runEvent(genparticles)
@@ -58,10 +59,18 @@ if __name__ == "__main__":
         vdispnorm = [vdisp[0] / math.sqrt(vdisp[0]*vdisp[0] + vdisp[1]*vdisp[1]), vdisp[1] / math.sqrt(vdisp[0]*vdisp[0] + vdisp[1]*vdisp[1])]
         phi = math.acos(pZnorm[0] * vdispnorm[0] + pZnorm[1] * vdispnorm[1])
         phival.append(phi)
+        x0.append(leptonvertex[0])
+        y0.append(leptonvertex[1])
 
 
     thephi = np.asarray(phival)
+    thex0 = np.asarray(x0)
+    they0 = np.asarray(y0)
     fig = plt.figure(figsize = (5,5))
-    plt.hist(thephi)
-    plt.show()
-
+    plt.hist(thephi, bins=50)
+    plt.savefig("colinearity.png")
+    fig2 = plt.figure(figsize = (5,5))
+    plt.xlim(-0.1, 0.1)
+    plt.ylim(-0.1, 0.1)
+    plt.plot(thex0, they0, '.')
+    plt.savefig("vertex.png")
