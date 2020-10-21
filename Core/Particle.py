@@ -11,7 +11,7 @@ class Particle:
     def __init__(self, pt, phi, x0, y0, m, pid):
 
         self.p = pt
-        self.phi = math.acos(math.cos(phi))
+        self.phi = phi 
         self.x0 = x0
         self.y0 = y0
         self.m = m

@@ -41,10 +41,10 @@ class TrackReconstruction:
             ymean += i[1]
             x2mean += i[0]*i[0]
             xymean += i[0]*i[1]
-        xmean /= len(simhits)
-        ymean /= len(simhits)
-        x2mean /= len(simhits)
-        xymean /= len(simhits)
+        xmean /= (len(simhits))
+        ymean /= (len(simhits))
+        x2mean /= (len(simhits))
+        xymean /= (len(simhits))
         b = (xymean - xmean * ymean)/(x2mean - xmean * xmean)
         a = (ymean - b * xmean)
         phi = math.atan(b)

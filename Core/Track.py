@@ -17,7 +17,7 @@ class Track:
         self.simhits = simhits
         self.genx0 = genx0
         self.geny0 = geny0
-        self.genphi = math.acos(math.cos(genphi))
+        self.genphi = genphi
         self.pid = pid
         self.genpt = genpt
 

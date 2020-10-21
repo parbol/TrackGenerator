@@ -42,6 +42,8 @@ if __name__ == "__main__":
     y0 = []
     for nevent in range(0, nevents):
         genparticles = gen.runEvent()
+        #for i in genparticles:
+        #    i.print('particle') 
         recotracks = reco.runEvent(genparticles)
 
         #Select leptons    
@@ -72,5 +74,5 @@ if __name__ == "__main__":
     fig2 = plt.figure(figsize = (5,5))
     plt.xlim(-0.1, 0.1)
     plt.ylim(-0.1, 0.1)
-    plt.plot(thex0, they0, '.')
+    plt.hist2d(thex0, they0, bins=10)
     plt.savefig("vertex.png")
