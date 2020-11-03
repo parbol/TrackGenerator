@@ -48,6 +48,13 @@ class TrackReconstruction:
         b = (xymean - xmean * ymean)/(x2mean - xmean * xmean)
         a = (ymean - b * xmean)
         phi = math.atan(b)
+        if simhits[0][1] > simhits[1][1]:
+            if math.sin(phi) > 0:
+                phi += 3.141592
+        else:
+            if math.sin(phi) < 0:
+                phi += 3.141592
+
         y0 = a / (b * b + 1.0)
         x0 = -b * y0
         track = Track(x0, y0, phi, simhits, particle.p, particle.x0, particle.y0, particle.phi, particle.pid)

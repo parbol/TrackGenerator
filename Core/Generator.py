@@ -13,7 +13,7 @@ class Generator:
 
     def runEvent(self):
 
-        pt = 2 + rn.expovariate(-1.0/2.0) * 20
+        pt = 2 + rn.expovariate(-1.0/10.0) * 10
         phi = rn.uniform(0, 2.0*3.1416)
         Zboson = Particle(pt, phi, 0, 0, 91, 2)
         Quark = Particle(pt, phi + 3.1416, 0, 0, self.quarkDecayMasses[0], 0)
@@ -61,10 +61,10 @@ class Generator:
         p2yrest = prest * math.sin(angle+3.1416) 
         gamma = mom.E/mom.m
         beta = mom.p/mom.E
-        E1boost = gamma * (Erest + beta * p1xrest)
-        p1xboost = gamma * (p1xrest + beta * Erest)
-        E2boost = gamma * (Erest + beta * p2xrest)
-        p2xboost = gamma * (p2xrest + beta * Erest)
+        E1boost = gamma * (Erest - beta * p1xrest)
+        p1xboost = gamma * (p1xrest - beta * Erest)
+        E2boost = gamma * (Erest - beta * p2xrest)
+        p2xboost = gamma * (p2xrest - beta * Erest)
         p1 = math.sqrt(p1xboost*p1xboost + p1yrest*p1yrest) 
         p2 = math.sqrt(p2xboost*p2xboost + p2yrest*p2yrest) 
         phi1 = mom.phi + math.atan2(p1yrest, p1xboost)
