@@ -75,6 +75,7 @@ if __name__ == "__main__":
         yc.append(yi)
 
  
+    """
     fig = plt.figure(figsize = (5,5))
     plt.xlim(-0.02, 0.02)
     plt.ylim(-0.02, 0.02)
@@ -86,6 +87,29 @@ if __name__ == "__main__":
     plt.arrow(0.02/2.0 * math.cos(phi+deltaphi), 0.02/2.0 * math.sin(phi+deltaphi), 1.0*0.02/4.0 * math.cos(phi+deltaphi), 1.0*0.02/4.0 * math.sin(phi+deltaphi), color='g', width=0.0001)
     plt.tight_layout()
     plt.savefig("TwoTracksCombined.png")
+    """
+
+    fig = plt.figure(figsize = (6,6))
+    ax = plt.axes(xlim = (-0.02, 0.02), ylim = (-0.02, 0.02), xlabel = 'x (cm)', ylabel = 'y (cm)')
+    ax.tick_params(axis='both', which='major', labelsize=12)
+    ax.ticklabel_format(style='sci', axis='both', scilimits=(0,0))
+    ax.xaxis.major.formatter._useMathText = True
+    ax.yaxis.major.formatter._useMathText = True
+    ax.text(0.05, 0.20, '2-Track fitting simulator', horizontalalignment='left', verticalalignment='center', transform=ax.transAxes, weight = 'bold')
+    ax.text(0.05, 0.15, 'Number of trials: '+str(options.nevents), horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
+    ax.text(0.05, 0.1, 'Hit resolution: '+str(options.resolution), horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
+    ax.text(0.05, 0.05, r'Angular separation $\Delta\varphi$ = '+str(deltaphi), horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
+    ax.plot(xc, yc, '.', color='r')
+    ax.arrow(0.02/2.0 * math.cos(phi), 0.02/2.0 * math.sin(phi), 1.0*0.02/4.0 * math.cos(phi), 1.0*0.02/4.0 * math.sin(phi), color='b',  width=0.0001, head_width = 0.001)
+    ax.arrow(0.02/2.0 * math.cos(phi+deltaphi), 0.02/2.0 * math.sin(phi+deltaphi), 1.0*0.02/4.0 * math.cos(phi+deltaphi), 1.0*0.02/4.0 * math.sin(phi+deltaphi), color='g', width=0.0001, head_width = 0.001)
+    fig.savefig("TwoTracksCombined_dphi.png")
+
+
+
+
+
+
+
 
  
  
